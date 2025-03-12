@@ -21,6 +21,7 @@
 			<section>
 				<p style="font-size:200%">Hashing &<br />Content Addressability</p>
 				<p>Foundations of Git, Bitcoin, & Nix</p>
+				<p style="">Matt McHenry</p>
 			</section>
 			<section data-auto-animate>
 				<p>What are</p>
@@ -37,7 +38,69 @@
 			<section>
 				<p style="font-size:200%">Let's Hash<br />Some Humans!</p>
 
-				<aside class="notes">test note</aside>
+				<aside class="notes">
+					<ol>
+						<li>born after 1900? -- puts everybody in the <b>same</b> category</li>
+						<li>born after 1990? -- splits us about in half</li>
+						<li>born after 1990? -- </li>
+						<li>born after 1990?</li>
+					</ol>
+				</aside>
+			</section>
+
+			<section>
+				<div class="r-stretch" style="transform: scale(1);"><iframe
+						src="https://emn178.github.io/online-tools/sha1.html"></iframe></div>
+			</section>
+			<section>
+				<h1>Git</h1>
+				<p>The problem of
+					<span style="font-style: italic;">distributed</span> version control
+				</p>
+			</section>
+
+			<!--
+			mkdir demo-repo
+			cd demo-repo
+			git init
+			npm init
+			cat package.json
+			git add package.json
+			git commit -am 'the next awesome npm package starts with a single commit'
+
+			tree .git
+			rm .git/hooks/*.sample
+			tree .git
+
+			cat .git/objects/68/34179c8adffce6dcca35cbba9c4332077392fe
+			cat .git/objects/68/34179c8adffce6dcca35cbba9c4332077392fe | file -
+			cat .git/objects/68/34179c8adffce6dcca35cbba9c4332077392fe | unpigz
+			wc -c package.json
+			echo -e "blob $(wc -c package.json | cut -d ' ' -f 1)$(cat package.json)" | sha1sum
+			cat .git/objects/68/34179c8adffce6dcca35cbba9c4332077392fe | unpigz | od -c
+			echo -e "blob $(wc -c package.json | cut -d ' ' -f 1)\x00$(cat package.json)" | sha1sum
+
+			cat .git/objects/2a/bde3ea3cf2549ca98a3b186a6003d186423945
+			cat .git/objects/2a/bde3ea3cf2549ca98a3b186a6003d186423945 | unpigz
+			cat .git/objects/2a/bde3ea3cf2549ca98a3b186a6003d186423945 | unpigz | od -xc
+
+			cat .git/objects/<the-commit> | unpigz
+
+			cat .git/HEAD
+			cat .git/refs/heads/master
+
+			git log --format=raw
+			git log --raw
+			git log
+			-->
+
+			<section>
+				<h1>Bitcoin</h1>
+			</section>
+
+
+			<section>
+				<h1>Nix</h1>
 			</section>
 
 			<section data-auto-animate data-auto-animate-restart>
