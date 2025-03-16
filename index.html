@@ -25,12 +25,19 @@
 			</section>
 			<section data-auto-animate>
 				<p>What are</p>
-				<p style="font-size:300%" data-id="hf">Hash Functions</p>
+				<p style="font-size:300%" data-id="h">Hash</p>
+				<p style="font-size:300%" data-id="f">Functions</p>
 				<p>anyway?</p>
 			</section>
 
 			<section data-auto-animate>
-				<p style="font-size:150%" data-id="hf">Hash Functions</p>
+				<p style="font-size:150%" data-id="f">Functions</p>
+				<p class="fragment fade-in">map a domain to a range</p>
+			</section>
+
+			<section data-auto-animate>
+				<p style="font-size:150%" data-id="h">Hash</p>
+				<p style="font-size:150%" data-id="f">Functions</p>
 				<p class="fragment fade-in">map a large domain to a small range</p>
 				<p class="fragment fade-in">put things in categories</p>
 			</section>
@@ -148,6 +155,11 @@
 				<p>Proof of Work</p>
 			</section>
 
+			<!-- blockchain explorer: https://www.blockchain.com/explorer/blocks/btc/888087 -->
+			<!-- blockchain diagrams:
+			     https://www.0xkishan.com/blogs/bitcoin-blocks-understanding-the-basics
+				 https://www.gsr.io/reports/cotw-how-bitcoin-works/ -->
+
 			<section>
 				<p style="font-size: 200%">Nix</p>
 			</section>
@@ -155,10 +167,13 @@
 			<section data-auto-animate>
 				<p>We've fed</p>
 				<div class="r-stack">
-					<p class="fragment current-visible">source code</p>
+					<p class="fragment current-visible">files</p>
+					<p class="fragment current-visible">directories</p>
+					<p class="fragment current-visible">commits</p>
 					<p class="fragment current-visible">transactions</p>
+					<p class="fragment current-visible">blocks</p>
 				</div>
-				<p>into a hash function</p>
+				<p data-id="into">into a hash function</p>
 			</section>
 
 			<section data-auto-animate>
@@ -170,14 +185,15 @@
 					<p class="fragment current-visible"><span style="font-family: monospace">pom.xml</span></p>
 					<p class="fragment current-visible">build scripts</p>
 				</div>
-				<p>into a hash function?</p>
+				<p data-id="into">into a hash function?</p>
 			</section>
 
 			<section data-auto-animate>
-				<p style="font-size: 150%"><span data-id="key-idea">Nix: Key Idea</span> #1</p>
-				<p>Name the</p>
-				<p data-id="build-products">build products</p>
-				<p>with the hash of the</p>
+				<p class="fragment" data-fragment-index="2" style="font-size: 150%"><span data-id="key-idea">Nix: Key
+						Idea</span> #1</p>
+				<p class="fragment" data-fragment-index="3">Name the</p>
+				<p class="fragment" data-fragment-index="1" data-id="build-products">build products</p>
+				<p class="fragment" data-fragment-index="4">with the hash of the</p>
 				<p data-id="build-recipe">build recipe</p>
 			</section>
 			<section data-auto-animate>
@@ -186,6 +202,10 @@
 				<p data-id="build-recipe">build recipes</p>
 				<p>reference upstream</p>
 				<p data-id="build-products">build products</p>
+			</section>
+
+			<section>
+				<!-- nix expression to build gnu hello; resulting /nix/store path, etc. -->
 			</section>
 
 			<section data-auto-animate data-auto-animate-restart>
