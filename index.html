@@ -152,6 +152,42 @@
 				<p style="font-size: 200%">Nix</p>
 			</section>
 
+			<section data-auto-animate>
+				<p>We've fed</p>
+				<div class="r-stack">
+					<p class="fragment current-visible">source code</p>
+					<p class="fragment current-visible">transactions</p>
+				</div>
+				<p>into a hash function</p>
+			</section>
+
+			<section data-auto-animate>
+				<p>What if we feed your</p>
+				<div class="r-stack">
+					<p class="fragment current-visible"><span style="font-family: monospace">Dockerfile</span></p>
+					<p class="fragment current-visible"><span style="font-family: monospace">Makefile</span></p>
+					<p class="fragment current-visible"><span style="font-family: monospace">package.json</span></p>
+					<p class="fragment current-visible"><span style="font-family: monospace">pom.xml</span></p>
+					<p class="fragment current-visible">build scripts</p>
+				</div>
+				<p>into a hash function?</p>
+			</section>
+
+			<section data-auto-animate>
+				<p style="font-size: 150%"><span data-id="key-idea">Nix: Key Idea</span> #1</p>
+				<p>Name the</p>
+				<p data-id="build-products">build products</p>
+				<p>with the hash of the</p>
+				<p data-id="build-recipe">build recipe</p>
+			</section>
+			<section data-auto-animate>
+				<p style="font-size: 150%"><span data-id="key-idea">Nix: Key Idea</span> #2</p>
+				<p>Downstream</p>
+				<p data-id="build-recipe">build recipes</p>
+				<p>reference upstream</p>
+				<p data-id="build-products">build products</p>
+			</section>
+
 			<section data-auto-animate data-auto-animate-restart>
 				<p><span class="fragment" data-fragment-index="5">&quot;</span>There are two hard problems in computer
 					science:
