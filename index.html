@@ -31,8 +31,8 @@
 
 			<section data-auto-animate>
 				<p style="font-size:150%" data-id="hf">Hash Functions</p>
-				<p class="fragment fade-in-then-semi-out">map a large domain to a small range</p>
-				<p class="fragment">put things in categories</p>
+				<p class="fragment fade-in">map a large domain to a small range</p>
+				<p class="fragment fade-in">put things in categories</p>
 			</section>
 
 			<section>
@@ -49,14 +49,48 @@
 			</section>
 
 			<section>
+				<!-- hash function properties:
+				 * different values
+				 * evenly-distributed values
+				 * values not predictable (apparently random)
+				 * a value for every input
+				 * quickly computable
+				 * can't find a collision
+				 * can't find an input that produces a specific output -->
+				<table>
+					<thead>
+						<th>Things (Domain)</th>
+						<th class="fragment fade-in">Categories (Range)</th>
+					</thead>
+					<tr>
+						<td class="fragment fade-in">People</td>
+						<td class="fragment fade-in">Born after <span style="font-family: monospace">$year</span>?</td>
+					</tr>
+					<tr>
+						<td class="fragment fade-in">People</td>
+						<td class="fragment fade-in">Birth Month</td>
+						<!-- July & August more likely, but depends on latitude -->
+					</tr>
+					<tr>
+						<td class="fragment fade-in">People</td>
+						<td class="fragment fade-in">Last digit of SSN</td>
+					</tr>
+				</table>
+				<aside class="notes">
+
+				</aside>
+			</section>
+
+			<section>
 				<div class="r-stretch" style="transform: scale(1);"><iframe
 						src="https://emn178.github.io/online-tools/sha1.html"></iframe></div>
 			</section>
 			<section>
-				<h1>Git</h1>
-				<p>The problem of
+				<p style="font-size: 200%">Git</p>
+				<p class="fragment fade-in">The problem of
 					<span style="font-style: italic;">distributed</span> version control
 				</p>
+				<p class="fragment fade-in">or, who gets to hand out the revision numbers?</p>
 			</section>
 
 			<!--
@@ -97,12 +131,25 @@
 			-->
 
 			<section>
-				<h1>Bitcoin</h1>
+				<p style="font-size: 200%">Bitcoin</p>
+				<p class="fragment fade-in">A transaction ledger that is:</p>
+				<ul>
+					<!-- hashes ensure transaction history can't be changed -->
+					<li class="fragment fade-in">Immutable</li>
+
+					<!-- no central bank to verify transactions -->
+					<!-- no one actor can control the system easily -->
+					<li class="fragment fade-in">Decentralized</li>
+				</ul>
 			</section>
 
+			<section>
+				<p style="font-size: 150%">Bitcoin: Key Idea</p>
+				<p>Proof of Work</p>
+			</section>
 
 			<section>
-				<h1>Nix</h1>
+				<p style="font-size: 200%">Nix</p>
 			</section>
 
 			<section data-auto-animate data-auto-animate-restart>
