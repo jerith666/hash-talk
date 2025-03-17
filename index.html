@@ -62,25 +62,25 @@
 				 * values not predictable (apparently random)
 				 * a value for every input
 				 * quickly computable
-				 * can't find a collision
-				 * can't find an input that produces a specific output -->
+				 * can't easily find a collision
+				 * can't easily find an input that produces a specific output -->
 				<table>
 					<thead>
 						<th>Things (Domain)</th>
 						<th class="fragment fade-in">Categories (Range)</th>
 					</thead>
 					<tr>
-						<td class="fragment fade-in">People</td>
+						<td class="fragment fade-in">👫</td>
 						<td class="fragment fade-in">Born after <span style="font-family: monospace">$year</span>?</td>
 					</tr>
 					<tr>
-						<td class="fragment fade-in">People</td>
+						<td class="fragment fade-in">👫</td>
 						<td class="fragment fade-in">Birth Month</td>
 						<!-- July & August more likely, but depends on latitude -->
 					</tr>
 					<tr>
-						<td class="fragment fade-in">People</td>
-						<td class="fragment fade-in">Last digit of SSN</td>
+						<td class="fragment fade-in">👫</td>
+						<td class="fragment fade-in">Last 4 digits of ☎#</td>
 					</tr>
 				</table>
 				<aside class="notes">
@@ -89,9 +89,12 @@
 			</section>
 
 			<section>
-				<div class="r-stretch" style="transform: scale(1);"><iframe
-						src="https://emn178.github.io/online-tools/sha1.html"></iframe></div>
+				<p style="font-size:200%">Let's Hash<br />Some Data!</p>
 			</section>
+
+			<section data-background-iframe="https://emn178.github.io/online-tools/sha1.html" data-background-interactive>
+			</section>
+
 			<section>
 				<p style="font-size: 200%">Git</p>
 				<p class="fragment fade-in">The problem of
@@ -155,10 +158,17 @@
 				<p>Proof of Work</p>
 			</section>
 
-			<!-- blockchain explorer: https://www.blockchain.com/explorer/blocks/btc/888087 -->
+			<section>
+				<p>Bitcoin Block Structure</p>
+				<img src="https://www.gsr.io/wp-content/uploads/2021/09/18.-Block-Structure-1024x527.png">
 			<!-- blockchain diagrams:
 			     https://www.0xkishan.com/blogs/bitcoin-blocks-understanding-the-basics
 				 https://www.gsr.io/reports/cotw-how-bitcoin-works/ -->
+			</section>
+
+			<section>
+				<a href="https://www.blockchain.com/explorer/blocks/btc/888087">An Example Bitcoin Block</a>
+			</section>
 
 			<section>
 				<p style="font-size: 200%">Nix</p>
