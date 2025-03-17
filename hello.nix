@@ -11,6 +11,7 @@ derivation rec {
   path =
     with nixpkgs;
     lib.concatMapStringsSep ":" (pkg: "${pkg}/bin") [
+      gnutar
       gzip
       gnused
       coreutils
@@ -26,7 +27,7 @@ derivation rec {
 
     PATH=$PATH:${path};
 
-    ${nixpkgs.pkgs.gnutar}/bin/tar xzvf $src
+    tar xzvf $src
     cd hello*;
     ./configure --prefix=$out
     make
