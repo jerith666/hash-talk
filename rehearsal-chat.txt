@@ -1,0 +1,103 @@
+14:02:12 From John Reeves To Everyone:
+	Love content addressability!
+	
+14:06:35 From Martina Pavelko To Everyone:
+	Lol haha that…makes sense.
+	Jose Gonzalez:❤️
+	Vishal Chhatwani, Jose Gonzalez:😄
+	
+14:10:45 From Ryan Ostrager To Everyone:
+	Link for SHA1 collisions for the curious: https://shattered.io/
+	
+14:10:58 From barbara calhoun To Everyone:
+	Are sha2 & sha3 longer?
+	
+14:11:49 From Ryan Ostrager To Everyone:
+	Replying to "Are sha2 & sha3 longer?":
+	Slightly
+	barbara calhoun:👍
+	
+14:12:25 From Kennedy Sanchez To Everyone:
+	Replying to "Are sha2 & sha3 longer?":
+	That’s correct. And are the recommended ones. Now She-1 is considered obsolete.
+	barbara calhoun:👍
+	
+14:13:07 From Ryan Ostrager To Everyone:
+	Replying to "Are sha2 & sha3 longer?":
+	SHA 2/3 have multiple variants with different lengths. The shortest length of SHA3 is actually slightly shorter than SHA1. All other variants are slightly longer
+	
+14:17:13 From Ryan Ostrager To Everyone:
+	Endianness strikes again
+	
+14:18:39 From John Reeves To Everyone:
+	Replying to "Endianness strikes again":
+	Maybe `hexdump -Cv` would be more readable in a presentation?
+	
+14:23:45 From JAckley To Everyone:
+	diffuse
+	
+14:33:11 From Ryan Ostrager To Everyone:
+	It's 20 0s for reference
+	
+14:34:24 From Karl Schaefer To Everyone:
+	What’s the difference between proof of work and proof of stake?
+	Jose Gonzalez:❤️
+	
+14:39:22 From Ryan Ostrager To Everyone:
+	Are those hashes of the recipe or the output of the recipe? If you recipe is nondeterministic (e.g. it includes a timestamp or something) will re-running it generate a new hash?
+	
+14:42:35 From John Reeves To Everyone:
+	It's a recipe for disaster
+	
+14:42:43 From Martina Pavelko To Everyone:
+	Replying to "Are those hashes of the recipe or the output of th...":
+	The bit that ends in hello.drv is the output (which keeps failing to build). So I think both, Ryan. But Matt can confirm. The recipe’s hash would be the same in your situation, but the output would change.
+	
+14:44:36 From John Reeves To Everyone:
+	diffs
+	Martina Pavelko, Ryan Ostrager:👆
+	
+14:45:45 From JAckley To Everyone:
+	Not surprising. Standing on a LOT of shoulders
+	
+14:46:12 From John Reeves To Everyone:
+	To make Hello World, first you must build a linux distribution
+	
+14:46:26 From Ryan Ostrager To Everyone:
+	This is why even a simple hello world program can be a few MB
+	
+14:48:19 From Martina Pavelko To Everyone:
+	Matt built it already!
+	
+14:50:12 From JAckley To Matt McHenry (direct message):
+	10 minutes, Matt
+	
+14:52:35 From John Reeves To Everyone:
+	You can fill time by changing the hashing example to add another digit
+	
+14:53:51 From Martina Pavelko To Everyone:
+	Some notes I had:
+	At the beginning when you’re talking about hashing people, and you talk about even distributions. Are even distributions better — why or why not? Make that connection more explicit
+	Reminder: show that a new commit in git refers to its parent
+	Maybe worth taking 2-3 minutes for what nix is and what its goals are a little more explicitly
+	Say explicitly that the reason it keeps repeating that it’s trying to build the hello.drv derivation is because it failed the first time through
+	
+14:56:25 From Martina Pavelko To Everyone:
+	It would be a real bummer if it didn’t find Detroit in 10000 tries
+	
+14:57:10 From Karl Schaefer To Everyone:
+	https://www.wired.com/story/undergraduate-upends-a-40-year-old-data-science-conjecture/
+	Jose Gonzalez:❤️
+	
+14:57:11 From Martina Pavelko To Everyone:
+	Or maybe some links at the end
+	
+14:58:32 From Martina Pavelko To Everyone:
+	I thought this bit was useful for folks who might be coming to the talk and be pretty naive about this.
+	
+14:59:18 From Jose Gonzalez To Everyone:
+	Small pointers!
+	
+14:59:52 From Jose Gonzalez To Everyone:
+	Look up is like log(n) or something better than n!
+	
