@@ -12,15 +12,6 @@ derivation rec {
   path =
     with nixpkgs;
     lib.concatMapStringsSep ":" (pkg: "${pkg}/bin") [
-      curl
-      gnutar
-      gzip
-      gnused
-      coreutils
-      gcc
-      gnugrep
-      gawk
-      gnumake
     ];
 
   buildScript = nixpkgs.writeText "buildScript" ''
@@ -29,11 +20,9 @@ derivation rec {
 
     PATH=$PATH:${path};
 
-    curl https://ftp.gnu.org/gnu/hello/hello-2.12.1.tar.gz -O hello.tar.gz
-
     tar xzvf $src
-    cd hello*;
-    ./configure --prefix=$out
+    cd hello-2.12.1;
+    ./configure
     make
     make install
   '';
