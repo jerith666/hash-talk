@@ -3,8 +3,9 @@ let
 in
 derivation rec {
   name = "hello";
+
   src = nixpkgs.fetchurl {
-    url = "mirror://gnu/hello/hello-2.12.1.tar.gz";
+    url = "https://ftp.gnu.org/gnu/hello/hello-2.12.1.tar.gz";
     hash = "sha256-jZkUKv2SV28wsM18tCqNxoCZmLxdYH2Idh9RLibH2yA=";
   };
 
@@ -33,7 +34,9 @@ derivation rec {
     make
     make install
   '';
+
   builder = "${nixpkgs.bash}/bin/bash";
   args = [ buildScript ];
+
   system = builtins.currentSystem;
 }
