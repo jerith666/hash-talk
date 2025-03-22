@@ -26,7 +26,7 @@ derivation rec {
     set -o errexit
     set -o nounset
 
-    PATH=$PATH:${path};
+    PATH=${path};
 
     tar xzvf $src
     cd hello-2.12.1;

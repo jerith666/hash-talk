@@ -14,7 +14,7 @@ derivation rec {
     set -o errexit
     set -o nounset
 
-    PATH=$PATH:${path};
+    PATH=${path};
 
     curl https://ftp.gnu.org/gnu/hello/hello-2.12.1.tar.gz -O hello.tar.gz
 
