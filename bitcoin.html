@@ -1,0 +1,105 @@
+<html>
+    <script src="node_modules/d3/dist/d3.min.js"></script>
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+            margin: 0;
+            padding: 20px;
+            display: flex;
+            justify-content: center;
+        }
+        
+        .node circle {
+            fill: #fff;
+            stroke: steelblue;
+            stroke-width: 3px;
+        }
+        
+        .node text {
+            font: 12px sans-serif;
+        }
+        
+        .link {
+            fill: none;
+            stroke: #ccc;
+            stroke-width: 2px;
+        }
+        
+        #visualization {
+            border: 1px solid #ddd;
+            border-radius: 5px;
+            padding: 10px;
+            width: 800px;
+            height: 400px;
+        }
+        
+        h1 {
+            text-align: center;
+            color: #333;
+        }
+    </style>
+    <body>
+        <div id="visualization">
+            <svg width="760" height="320"></svg>
+        </div>
+    
+        <script>
+            // Set up our tree data
+            const treeData = {
+                name: "Parent",
+                children: [
+                    { name: "Child 1" },
+                    { name: "Child 2" }
+                ]
+            };
+    
+            // Set up dimensions and margins
+            const margin = {top: 40, right: 90, bottom: 50, left: 90};
+            const width = 760 - margin.left - margin.right;
+            const height = 320 - margin.top - margin.bottom;
+    
+            // Append the svg object to the body of the page
+            const svg = d3.select("svg")
+                .attr("width", width + margin.left + margin.right)
+                .attr("height", height + margin.top + margin.bottom)
+                .append("g")
+                .attr("transform", `translate(${margin.left},${margin.top})`);
+    
+            // Create a tree layout
+            const treeLayout = d3.tree().size([width, height]);
+    
+            // Prepare the data hierarchy
+            const root = d3.hierarchy(treeData);
+    
+            // Assign the data to the tree layout
+            treeLayout(root);
+    
+            // Add links between nodes
+            svg.selectAll(".link")
+                .data(root.links())
+                .join("path")
+                .attr("class", "link")
+                .attr("d", d3.linkVertical()
+                    .x(d => d.x)
+                    .y(d => d.y));
+    
+            // Add nodes
+            const node = svg.selectAll(".node")
+                .data(root.descendants())
+                .join("g")
+                .attr("class", "node")
+                .attr("transform", d => `translate(${d.x},${d.y})`);
+    
+            // Add circles to nodes
+            node.append("circle")
+                .attr("r", 10);
+    
+            // Add labels to nodes
+            node.append("text")
+                .attr("dy", ".35em")
+                .attr("y", d => d.children ? -20 : 20)
+                .style("text-anchor", "middle")
+                .text(d => d.data.name);
+        </script>
+    </body>
+</html>
