@@ -109,7 +109,7 @@
             
         // Draw the main block - now on the left
         const blockWidth = 400;
-        const blockHeight = 310;
+        const blockHeight = 270;
         const blockX = 50;
         const blockY = (height - blockHeight) / 2;
         
@@ -205,7 +205,7 @@
                 .text("Minted Reward (3.125 BTC)");
                 
             // Regular transactions - just add 1 for candidates for simplicity
-            const txCount = isCandidate ? 1 : 3;
+            const txCount = 2;//isCandidate ? 2 : 3;
             const txPrefix = isCandidate ? `C${candidateNum}-` : "";
             
             for (let i = 0; i < txCount; i++) {
@@ -276,12 +276,12 @@
         
         // Create first candidate block (top right)
         const candidateWidth = 350;
-        const candidateHeight = 200;
+        const candidateHeight = 260;
         const candidateX = width - candidateWidth - 50;
         
         const candidate1 = createBlock(
             candidateX,
-            60,
+            0,
             candidateWidth,
             candidateHeight,
             "block candidate-1",
@@ -340,8 +340,8 @@
         }
         
         // Draw arrows connecting the blocks - now from right to left
-        drawArrow(candidate1.prevHashX - 80, candidate1.prevHashY, mainBlock.rightX, blockY + 120);
-        drawArrow(candidate2.prevHashX - 80, candidate2.prevHashY, mainBlock.rightX, blockY + 220);
+        drawArrow(candidate1.prevHashX - 140, candidate1.prevHashY, mainBlock.rightX+20, blockY + 120);
+        drawArrow(candidate2.prevHashX - 140, candidate2.prevHashY, mainBlock.rightX+20, blockY + 220);
     </script>
 </body>
 </html>
