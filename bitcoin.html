@@ -93,7 +93,6 @@
 </head>
 <body>
     <div class="container">
-        <h1>Bitcoin Block Chain Visualization</h1>
         <svg width="960" height="650"></svg>
     </div>
 
@@ -203,7 +202,7 @@
                 .attr("text-anchor", "middle")
                 .attr("font-weight", "bold")
                 .attr("class", "transaction-text")
-                .text("Coinbase Transaction (3.125 BTC)");
+                .text("Minted Reward (3.125 BTC)");
                 
             // Regular transactions - just add 1 for candidates for simplicity
             const txCount = isCandidate ? 1 : 3;
