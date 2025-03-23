@@ -49,6 +49,10 @@
 
 			<section>
 				<p style="font-size:200%">Who's at the conference?</p>
+				<aside class="notes">
+					<p>is Kevin here? -- easy to find in short list</p>
+					<p>is Anthony here? -- hard to find in long list</p>
+				</aside>
 			</section>
 
 			<section data-auto-animate>
@@ -130,7 +134,7 @@
 				</div>
 			</section>
 
-			<section>
+			<!-- section>
 				<p style="font-size:200%">Let's Hash<br />Some Humans!</p>
 
 				<aside class="notes">
@@ -141,17 +145,17 @@
 						<li>born after 1990?</li>
 					</ol>
 				</aside>
-			</section>
+			</section -->
 
-			<section>
-				<!-- hash function properties:
+			<!-- section>
+				<!- - hash function properties:
 				 * different values
 				 * evenly-distributed values
 				 * values not predictable (apparently random)
 				 * a value for every input
 				 * quickly computable
 				 * can't easily find a collision
-				 * can't easily find an input that produces a specific output -->
+				 * can't easily find an input that produces a specific output - ->
 				<table>
 					<thead>
 						<th>Things (Domain)</th>
@@ -164,7 +168,7 @@
 					<tr>
 						<td class="fragment fade-in">👫</td>
 						<td class="fragment fade-in">Birth Month</td>
-						<!-- July & August more likely, but depends on latitude -->
+						<!- - July & August more likely, but depends on latitude - ->
 					</tr>
 					<tr>
 						<td class="fragment fade-in">👫</td>
@@ -174,6 +178,37 @@
 				<aside class="notes">
 
 				</aside>
+			</section -->
+
+			<section>
+				<p style="font-size:150%">Hash Functions</p>
+				<ul>
+					<li>Even Distribution</li>
+					<li>Fast to Compute</li>
+				</ul>
+			</section>
+			
+			<section>
+				<p style="font-size:150%">Cryptographic</p>
+				<p style="font-size:150%">Hash Functions</p>
+				<ul>
+					<li>Roughly Even Distribution</li>
+					<li>Apparently Random</li>
+					<li>Fast to Compute</li>
+					<li>Large Range</li>
+					<li>Hard to Invert</li>
+					<li>Collision Resistant</li>
+				</ul>
+			</section>
+
+			<section>
+				<p style="font-size:150%">How big is SHA1's output size?</p>
+				<table style="font-size:50%">
+				<tr><td style="text-align: right;">7,500,000,000,000,000,000</td><td>grains of sand on Earth</td></tr>
+				<tr><td style="text-align: right;">602,214,076,000,000,000,000,000</td><td>atoms in 12g of carbon</td></tr>
+				<tr><td style="text-align: right;">1,000,000,000,000,000,000,000,000</td><td>stars in the Universe</td></tr>
+				<tr><td style="text-align: right;">1,461,501,637,330,902,918,203,684,832,716,283,019,655,932,542,976</td><td>possible SHA1 values</td></tr>
+			</table>
 			</section>
 
 			<section>
