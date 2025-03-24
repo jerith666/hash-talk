@@ -26,7 +26,7 @@
 			<section>
 				<p style="font-size:200%">Hashing &<br />Content Addressability</p>
 				<p>Foundations of Git, Bitcoin, & Nix</p>
-				<p style="">Matt McHenry</p>
+				<p>Matt McHenry</p>
 			</section>
 			<section data-auto-animate>
 				<p>What are</p>
@@ -180,24 +180,23 @@
 				</aside>
 			</section -->
 
-			<section>
+			<section data-auto-animate>
 				<p style="font-size:150%">Hash Functions</p>
 				<ul>
-					<li>Even Distribution</li>
-					<li>Fast to Compute</li>
+					<li data-id="1" class="fragment">Even Distribution</li>
+					<li class="fragment">Fast to Compute</li>
 				</ul>
 			</section>
 			
-			<section>
+			<section data-auto-animate>
 				<p style="font-size:150%">Cryptographic</p>
 				<p style="font-size:150%">Hash Functions</p>
 				<ul>
-					<li>Roughly Even Distribution</li>
-					<li>Apparently Random</li>
+					<li data-id="1"><span class="r-stack" style="text-align: left;"><span class="fragment fade-out">Even Distribution</span><span class="fragment">Apparently Random</span></span></li>
 					<li>Fast to Compute</li>
-					<li>Large Range</li>
-					<li>Hard to Invert</li>
-					<li>Collision Resistant</li>
+					<li class="fragment">Large Range</li>
+					<li class="fragment">Hard to Invert</li>
+					<li class="fragment">Collision Resistant</li>
 				</ul>
 			</section>
 
@@ -212,11 +211,11 @@
 			<section>
 				<p style="font-size:150%">How big is SHA1's output size?</p>
 				<table style="font-size:50%">
-					<tr><td style="text-align: right;">7,500,000,000,000,000,000</td><td>grains of sand on Earth</td></tr>
-					<tr><td style="text-align: right;">434,881,440,000,000,000,000</td><td>age of the universe (ms)</td></tr>
-					<tr><td style="text-align: right;">602,214,076,000,000,000,000,000</td><td>atoms in 12g of carbon</td></tr>
-					<tr><td style="text-align: right;">1,000,000,000,000,000,000,000,000</td><td>stars in the Universe</td></tr>
-					<tr><td style="text-align: right;">1,461,501,637,330,902,918,203,684,832,716,283,019,655,932,542,976</td><td>possible SHA1 values</td></tr>
+					<tr class="fragment"><td style="text-align: right;">7,500,000,000,000,000,000</td><td>grains of sand on Earth</td></tr>
+					<tr class="fragment"><td style="text-align: right;">434,881,440,000,000,000,000</td><td>age of the universe (ms)</td></tr>
+					<tr class="fragment"><td style="text-align: right;">602,214,076,000,000,000,000,000</td><td>atoms in 12g of carbon</td></tr>
+					<tr class="fragment"><td style="text-align: right;">1,000,000,000,000,000,000,000,000</td><td>stars in the Universe</td></tr>
+					<tr class="fragment"><td style="text-align: right;">1,461,501,637,330,902,918,203,684,832,716,283,019,655,932,542,976</td><td>possible SHA1 values</td></tr>
 				</table>
 			</section>
 
@@ -289,12 +288,12 @@
 			</section>
 
 			<section>
-				<div class="fig-container" data-file="bitcoin.html"></div>
+				<p style="font-size: 150%">Bitcoin: Key Idea #2</p>
+				<p>Proof of Work</p>
 			</section>
 
 			<section>
-				<p style="font-size: 150%">Bitcoin: Key Idea #2</p>
-				<p>Proof of Work</p>
+				<div class="fig-container" data-file="bitcoin.html"></div>
 			</section>
 
 			<section>
@@ -337,6 +336,12 @@
 				<p data-id="into">into a hash function?</p>
 			</section>
 
+			<section>
+				<p style="font-size: 150%">Nix:</p>
+				<p class="fragment">Reproducible Builds</p>
+				<p class="fragment">Portable Results</p>
+			</section>
+
 			<section data-auto-animate>
 				<p class="fragment" data-fragment-index="2" style="font-size: 150%"><span data-id="key-idea">Nix: Key
 						Idea</span> #1</p>
@@ -357,11 +362,7 @@
 				<p>Questions?</p>
 			</section>
 
-			<section>
-				<!-- nix expression to build gnu hello; resulting /nix/store path, etc. -->
-			</section>
-
-			<section data-auto-animate data-auto-animate-restart>
+			<!--section data-auto-animate data-auto-animate-restart>
 				<p><span class="fragment" data-fragment-index="5">&quot;</span>There are two hard problems in computer
 					science:
 				</p>
@@ -377,7 +378,7 @@
 
 			<section data-auto-animate>
 				<p data-id="naming-things">Naming Things</p>
-			</section>
+			</section -->
 		</div>
 	</div>
 
