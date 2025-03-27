@@ -1,0 +1,347 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Bitcoin Block Chain Visualization</title>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/d3/7.8.5/d3.min.js"></script>
+    <style>
+        body {
+            font-family: 'Courier New', monospace;
+            margin: 0;
+            padding: 20px;
+            background-color: #f5f5f5;
+            color: #333;
+        }
+        
+        .container {
+            max-width: 1000px;
+            margin: 0 auto;
+            background-color: white;
+            border-radius: 8px;
+            box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+            padding: 20px;
+        }
+        
+        h1 {
+            text-align: center;
+            color: #1a1a1a;
+            margin-bottom: 30px;
+        }
+        
+        .block {
+            stroke: #4a4a4a;
+            stroke-width: 2px;
+            fill: #e6f7ff;
+        }
+        
+        .candidate-1 {
+            fill: #e6f7ff;
+        }
+        
+        .candidate-2 {
+            fill: #e6f7ff;
+        }
+        
+        .transaction {
+            stroke: #2d2d2d;
+            stroke-width: 1px;
+            fill: white;
+        }
+        
+        .mint-transaction {
+            fill: #fffacd;
+        }
+        
+        .nonce {
+            fill: #e6ffe6;
+        }
+        
+        .hash {
+            fill: #ffe6e6;
+        }
+        
+        .header {
+            fill: #e6e6ff;
+        }
+        
+        .transaction-text, .field-text {
+            font-size: 12px;
+            text-anchor: middle;
+        }
+        
+        .transaction-id {
+            font-size: 11px;
+            fill: #555;
+        }
+        
+        .arrow {
+            stroke: #d62728;
+            stroke-width: 2px;
+            fill: none;
+        }
+        
+        .arrow-head {
+            fill: #d62728;
+        }
+        
+        .link-line {
+            stroke: #d62728;
+            stroke-width: 2.5px;
+        }
+    </style>
+</head>
+<body>
+    <div class="container">
+        <svg width="960" height="650"></svg>
+    </div>
+
+    <script>
+        // Set up dimensions
+        const width = 960;
+        const height = 650;
+        const margin = {top: 20, right: 20, bottom: 20, left: 20};
+        
+        // Select SVG
+        const svg = d3.select("svg")
+            .attr("width", width)
+            .attr("height", height);
+            
+        // Draw the main block - now on the left
+        const blockWidth = 400;
+        const blockHeight = 270;
+        const blockX = 50;
+        const blockY = (height - blockHeight) / 2;
+        
+        // Function to create a block
+        function createBlock(x, y, width, height, blockClass, blockTitle, prevHashText, nonceValue, blockHashText, isCandidate = false, candidateNum = "") {
+            // Main block container
+            svg.append("rect")
+                .attr("x", x)
+                .attr("y", y)
+                .attr("width", width)
+                .attr("height", height)
+                .attr("class", blockClass)
+                .attr("rx", 10)
+                .attr("ry", 10)
+                .attr("stroke", "#4a4a4a")
+                .attr("stroke-width", 2);
+                
+            // Add Block Title
+            svg.append("text")
+                .attr("x", x + width / 2)
+                .attr("y", y + 25)
+                .attr("text-anchor", "middle")
+                .attr("font-size", "16px")
+                .attr("font-weight", "bold")
+                .text(blockTitle);
+                
+            // Add Header section
+            const headerHeight = 60;
+            svg.append("rect")
+                .attr("x", x + 20)
+                .attr("y", y + 40)
+                .attr("width", width - 40)
+                .attr("height", headerHeight)
+                .attr("class", "header")
+                .attr("rx", 5)
+                .attr("ry", 5);
+                
+            svg.append("text")
+                .attr("x", x + width / 2)
+                .attr("y", y + 55)
+                .attr("text-anchor", "middle")
+                .attr("font-size", "14px")
+                .attr("font-weight", "bold")
+                .text("Block Header");
+                
+            // Add Previous Hash
+            svg.append("text")
+                .attr("x", x + width / 2)
+                .attr("y", y + 75)
+                .attr("class", "field-text")
+                .attr("text-anchor", "middle")
+                .text(`Previous Block Hash: ${prevHashText}`);
+            
+            // Add Nonce field with special highlighting
+            svg.append("rect")
+                .attr("x", x + 20)
+                .attr("y", y + 85)
+                .attr("width", width - 40)
+                .attr("height", 25)
+                .attr("class", "nonce")
+                .attr("rx", 3)
+                .attr("ry", 3);
+                
+            svg.append("text")
+                .attr("x", x + width / 2)
+                .attr("y", y + 100)
+                .attr("text-anchor", "middle")
+                .attr("font-weight", "bold")
+                .attr("class", "field-text")
+                ;//.text(`Nonce: ${nonceValue}`);
+                
+            // Add Transactions section
+            const transactionHeight = 40;
+            const transactionSpacing = 10;
+            const transactionStartY = y + headerHeight + 60;
+            
+            // Mint/Coinbase transaction
+            svg.append("rect")
+                .attr("x", x + 20)
+                .attr("y", transactionStartY)
+                .attr("width", width - 40)
+                .attr("height", transactionHeight)
+                .attr("class", "transaction mint-transaction")
+                .attr("rx", 5)
+                .attr("ry", 5);
+                
+            svg.append("text")
+                .attr("x", x + width / 2)
+                .attr("y", transactionStartY + (transactionHeight/2) + 5)
+                .attr("text-anchor", "middle")
+                .attr("font-weight", "bold")
+                .attr("class", "transaction-text")
+                ;//.text("Minted Reward (3.125 BTC)");
+                
+            // Regular transactions - just add 1 for candidates for simplicity
+            const txCount = 2;//isCandidate ? 2 : 3;
+            const txPrefix = isCandidate ? `C${candidateNum}-` : "";
+            
+            for (let i = 0; i < txCount; i++) {
+                const yPos = transactionStartY + transactionHeight + transactionSpacing + (i * (transactionHeight + transactionSpacing));
+                
+                svg.append("rect")
+                    .attr("x", x + 20)
+                    .attr("y", yPos)
+                    .attr("width", width - 40)
+                    .attr("height", transactionHeight)
+                    .attr("class", "transaction")
+                    .attr("rx", 5)
+                    .attr("ry", 5);
+                    
+                svg.append("text")
+                    .attr("x", x + width / 2)
+                    .attr("y", yPos + (transactionHeight/2) + 5)
+                    .attr("text-anchor", "middle")
+                    .attr("font-weight", "bold")
+                    .attr("class", "transaction-text")
+                    .text(`${txPrefix}Transaction ${i+1}`);
+            }
+            
+            // Add Block Hash at the bottom
+            const hashY = transactionStartY + (txCount + 1) * (transactionHeight + transactionSpacing) + 5;
+            
+            svg.append("rect")
+                .attr("x", x + 20)
+                .attr("y", hashY)
+                .attr("width", width - 40)
+                .attr("height", 30)
+                .attr("class", "hash")
+                .attr("rx", 5)
+                .attr("ry", 5)
+                .attr("id", `hash-block-${isCandidate ? 'candidate-' + candidateNum : 'main'}`);
+                
+            svg.append("text")
+                .attr("x", x + width / 2)
+                .attr("y", hashY + 20)
+                .attr("text-anchor", "middle")
+                .attr("font-weight", "bold")
+                .attr("class", "field-text")
+                .text(`Block Hash: ${blockHashText}`);
+                
+            return {
+                hashY: hashY + 15,
+                hashX: x + width/2,
+                prevHashY: y + 75,
+                prevHashX: x + width/2,
+                rightX: x + width, 
+                centerY: y + height/2,
+                bottomY: hashY + 30
+            };
+        }
+        
+        // Create original block (now on the left)
+        const mainBlock = createBlock(
+            blockX,
+            blockY,
+            blockWidth,
+            blockHeight,
+            "block",
+            "Block #789,123",
+            "ab12cd34...",
+            "2,873,954,215",
+            "ef56gh78..."
+        );
+        
+        // Create first candidate block (top right)
+        const candidateWidth = 350;
+        const candidateHeight = 260;
+        const candidateX = width - candidateWidth - 50;
+        
+        const candidate1 = createBlock(
+            candidateX,
+            0,
+            candidateWidth,
+            candidateHeight,
+            "block candidate-1",
+            "Candidate Block #789,124 (A)",
+            "ef56gh78...",
+            "1,567,832,901",
+            "ij90kl12...",
+            true,
+            "A"
+        );
+        
+        // Create second candidate block (bottom right)
+        const candidate2 = createBlock(
+            candidateX,
+            height - candidateHeight - 60,
+            candidateWidth,
+            candidateHeight,
+            "block candidate-2",
+            "Candidate Block #789,124 (B)",
+            "ef56gh78...",
+            "3,982,156,047",
+            "mn34op56...",
+            true,
+            "B"
+        );
+        
+        // Create improved arrows from candidate blocks to main block
+        function drawArrow(startX, startY, endX, endY) {
+            // Draw the arrow path
+            const path = d3.path();
+            path.moveTo(startX, startY);
+            
+            // Move horizontally left first
+            const midX = startX - 60;
+            path.lineTo(midX, startY);
+            
+            // Then curve to destination
+            path.bezierCurveTo(
+                midX - 40, startY,
+                endX + 40, endY,
+                endX, endY
+            );
+            
+            svg.append("path")
+                .attr("d", path)
+                .attr("class", "link-line")
+                .attr("fill", "none");
+                
+            // Add arrow head
+            const arrowSize = 8;
+            
+            svg.append("polygon")
+                .attr("points", `0,${-arrowSize} ${arrowSize*2},0 0,${arrowSize}`)
+                .attr("class", "arrow-head")
+                .attr("transform", `translate(${endX}, ${endY}) rotate(180)`);
+        }
+        
+        // Draw arrows connecting the blocks - now from right to left
+        drawArrow(candidate1.prevHashX - 140, candidate1.prevHashY, mainBlock.rightX+20, blockY + 120);
+        drawArrow(candidate2.prevHashX - 140, candidate2.prevHashY, mainBlock.rightX+20, blockY + 220);
+    </script>
+</body>
+</html>
