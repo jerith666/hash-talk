@@ -10,6 +10,8 @@ import Data.Map (Map)
 import qualified Data.Map as Map
 import Data.Char (toLower, toUpper)
 import Numeric (showHex)
+import System.IO (stdin, hIsTerminalDevice)
+import Control.Monad (when)
 
 -- Convert ByteString to hex string
 toHex :: ByteString -> String
@@ -87,9 +89,12 @@ generateHTML table = unlines
 
 main :: IO ()
 main = do
-    putStrLn "Enter names (one per line, empty line to finish):"
-    names <- readNames
-    let nameHashes = [(name, hashName name) | name <- names]
+    isTerminal <- hIsTerminalDevice stdin
+    when isTerminal $ putStrLn "Enter names (one per line, empty line to finish):"
+    
+    contents <- getContents
+    let names = filter (not . null) $ lines contents
+        nameHashes = [(name, hashName name) | name <- names]
         table = buildTable nameHashes
         html = generateHTML table
     
@@ -98,12 +103,3 @@ main = do
     
     writeFile "output.html" html
     putStrLn "\nHTML table written to output.html"
-
-readNames :: IO [String]
-readNames = readNames' []
-  where
-    readNames' acc = do
-        line <- getLine
-        if null line
-            then return (reverse acc)
-            else readNames' (line:acc)
