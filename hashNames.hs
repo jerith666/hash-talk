@@ -1,5 +1,5 @@
 #!/usr/bin/env nix-shell
-#!nix-shell -i runghc -p "haskellPackages.ghcWithPackages (pkgs: [ pkgs.SHA ])"
+#!nix-shell -i runghc -p "haskellPackages.ghcWithPackages (pkgs: [ pkgs.cryptohash-sha1 ])"
 
 import Crypto.Hash.SHA1 (hash)
 import Data.ByteString (ByteString)
