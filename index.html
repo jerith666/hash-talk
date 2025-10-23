@@ -651,6 +651,7 @@
 			</section>
 
 			<!--
+			nix-shell
 			mkdir demo-repo
 			cd demo-repo
 			git init
@@ -684,7 +685,7 @@
 			git log --raw
 			git log
 
-			for n in $(seq 1 10000); do clear; echo; echo $n; echo; git commit -a --amend -m "the next awesome npm package starts with a single commit" -m "salt: $n"; if git log --format=%h | grep ^313; then break; fi; done
+			for n in $(seq 1 10000); do clear; echo; echo $n; echo; git commit --amend -m "the next awesome npm package starts with a single commit" -m "salt: $n"; if git log --format=%h | grep ^412; then break; fi; done
 			-->
 
 			<section>
