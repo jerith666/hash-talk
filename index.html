@@ -691,7 +691,7 @@
 			git log --raw
 			git log
 
-			for n in $(seq 1 10000); do clear; echo; (git log -1 | cat &); if git commit --amend -m "the next awesome npm package starts with a single commit" -m "salt: $n" | grep 'master 412'; then break; fi; done
+			for n in $(seq 1 10000); do clear; echo; (git log -1 | cat &); if git commit --amend -m "the next awesome npm package starts with a single commit" -m "salt: $n" | grep '[a-z] 412'; then break; fi; done
 			-->
 
 			<section>
